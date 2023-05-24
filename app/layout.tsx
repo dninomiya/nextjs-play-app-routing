@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   twitter: {
     title: 'Next.js Play App Router',
     card: 'summary_large_image',
-    site: '@d151005',
+    creator: '@d151005',
   },
 };
 
