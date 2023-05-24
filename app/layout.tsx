@@ -1,10 +1,14 @@
+import { Metadata } from 'next';
 import Header from './_components/header';
 import FileTree from './_components/tree';
 import './globals.css';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Next.js Play App Router',
   description: 'Next.js の App Router の動作サンプル',
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
