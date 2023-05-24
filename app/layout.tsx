@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Next.js Play App Router',
     card: 'summary_large_image',
     creator: '@d151005',
+    description: 'Next.js の App Router の動作サンプル',
   },
 };
 
