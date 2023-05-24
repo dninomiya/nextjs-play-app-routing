@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   title: 'Next.js Play App Router',
   description: 'Next.js の App Router の動作サンプル',
   twitter: {
+    title: 'Next.js Play App Router',
     card: 'summary_large_image',
+    site: '@d151005',
   },
 };
 
