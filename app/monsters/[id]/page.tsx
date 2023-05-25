@@ -1,7 +1,5 @@
 import Note from '@/app/_components/note';
 import { Monsters } from '@/app/_lib/monsters';
-import Link from 'next/link';
-import React from 'react';
 
 export default function PhotoDetail({
   params,
