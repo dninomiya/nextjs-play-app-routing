@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import Header from './header';
 import FileTree from './tree';
 import CodePanel from './code';
@@ -15,9 +15,7 @@ export default function CoreLayout({
         <Header />
         <div className="flex gap-10 mt-10">{children}</div>
       </div>
-      <Suspense fallback={<p>loading</p>}>
-        <CodePanel />
-      </Suspense>
+      <CodePanel />
     </div>
   );
 }
