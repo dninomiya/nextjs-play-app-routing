@@ -1,3 +1,5 @@
+'use client';
+
 import Note from '@/app/_components/note';
 import { Monsters } from '@/app/_lib/monsters';
 
