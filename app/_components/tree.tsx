@@ -20,7 +20,7 @@ type FileOrFolder = {
 const tree: FileOrFolder[] = [
   {
     name: 'layout.tsx',
-    sourcePath: 'app/layout.tsx',
+    sourcePath: 'layout.tsx',
   },
   {
     name: 'page.tsx',
@@ -146,6 +146,8 @@ const Item = ({
     modal: string[];
   };
 }) => {
+  const codeBaseURL =
+    'https://github.com/dninomiya/nextjs-play-app-routing/blob/main/app/';
   const pathname = usePathname();
   const isActive =
     data.currentPath &&
@@ -201,14 +203,9 @@ const Item = ({
         <span className="flex-1">{data.name}</span>
 
         {data.sourcePath && (
-          <Link
-            href={{
-              pathname,
-              query: { source: data.sourcePath },
-            }}
-          >
+          <a href={`${codeBaseURL}${data.sourcePath}`} target="_blank">
             <CodeBracketIcon className="w-5 h-5 text-gray-600" />
-          </Link>
+          </a>
         )}
         {isActive && (
           <span className="relative flex h-2.5 w-2.5">

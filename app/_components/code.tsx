@@ -3,11 +3,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export default async function CodePanel() {
-  const pathes = ['/app/layout.tsx'];
+  const pathes = ['app/layout.tsx'];
 
   const codes = await Promise.all(
     pathes.map((filePath) => {
-      const jsonPath = path.join(process.cwd(), filePath);
+      const jsonPath = path.resolve(process.cwd(), filePath);
       return fs.readFileSync(jsonPath, 'utf8');
     })
   );
