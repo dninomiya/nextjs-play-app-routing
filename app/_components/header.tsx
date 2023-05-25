@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header>
-      <div className="text-slate-500 text-sm border rounded-full px-5 py-2 border-slate-800 my-6">
+      <div className="text-slate-500 text-sm border rounded-full px-5 py-2 border-slate-800">
         {pathName}
       </div>
     </header>

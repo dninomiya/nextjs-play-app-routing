@@ -1,5 +1,6 @@
 'use client';
 
+import Note from '@/app/_components/note';
 import { Monsters } from '@/app/_lib/monsters';
 import { Dialog, Transition } from '@headlessui/react';
 import { useRouter } from 'next/navigation';
@@ -62,7 +63,7 @@ export default function Example({
                       className="block h-32"
                     />
                   </div>
-                  <div className="mt-3 text-center sm:mt-5">
+                  <div className="mt-3 sm:mt-5">
                     <Dialog.Title
                       as="h3"
                       className="text-lg font-semibold leading-6 mb-4"
@@ -70,9 +71,14 @@ export default function Example({
                       {item.title}
                     </Dialog.Title>
 
-                    <Dialog.Description className="text-slate-500">
-                      この状態でリロードすると詳細ページとして開きます。
-                    </Dialog.Description>
+                    <div className="text-slate-500">
+                      <p>この状態でリロードすると詳細ページとして開きます。</p>
+                    </div>
+
+                    <Note
+                      title="@modal/(.)monsters/[id]/page.tsx"
+                      description="窃取ルート（（.）窃取対象のパス）を使うと、本来の遷移先の代わりに自分を表示させることができます。Next.jsのルート変更時のみ窃取するので、目的のURLにダイレクトアクセスした場合は窃取しません。これにより、一覧画面からクリックした際はモーダルを開き、URLを直接開いた場合は詳細画面を開かせる。などの実装ができます。ためしにこの画面をリロードしてみると、モーダルではなく本来の遷移先である詳細画面が開きます。"
+                    />
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6">

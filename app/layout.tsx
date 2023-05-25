@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import Header from './_components/header';
-import FileTree from './_components/tree';
+import CoreLayout from './_components/core-layout';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -26,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="h-full bg-black text-white">
       <body className="h-full container">
-        <Header />
-        <div className="flex mt-10 pb-14 gap-10">
-          <FileTree />
+        <CoreLayout>
           <main className="flex-1 border-2 border-indigo-500 p-6 relative">
             {children}
             <span className="absolute bottom-full left-0 mb-2 text-indigo-600">
@@ -41,8 +38,8 @@ export default function RootLayout({
               @sidebar
             </span>
           </div>
-        </div>
-        {modal}
+          {modal}
+        </CoreLayout>
       </body>
     </html>
   );

@@ -1,13 +1,16 @@
 'use client';
 
-import { useSelectedLayoutSegments } from 'next/navigation';
+import { usePathname, useSelectedLayoutSegments } from 'next/navigation';
 import React from 'react';
 import { FolderIcon } from '@heroicons/react/24/outline';
+import { CodeBracketIcon } from '@heroicons/react/20/solid';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 type FileOrFolder = {
   name: string;
   children?: FileOrFolder[];
+  sourcePath?: string;
   currentPath?: {
     slot: 'main' | 'sidebar' | 'modal';
     pattern: string;
@@ -17,6 +20,7 @@ type FileOrFolder = {
 const tree: FileOrFolder[] = [
   {
     name: 'layout.tsx',
+    sourcePath: 'app/layout.tsx',
   },
   {
     name: 'page.tsx',
@@ -118,8 +122,6 @@ export default function FileTree() {
     modal: useSelectedLayoutSegments('modal'),
   };
 
-  console.log(pathes);
-
   return (
     <div className="text-xs">
       <div className="border rounded-md border-slate-700 w-[240px] bg-slate-900">
@@ -144,16 +146,12 @@ const Item = ({
     modal: string[];
   };
 }) => {
+  const pathname = usePathname();
   const isActive =
     data.currentPath &&
     pathes[data.currentPath.slot]
       .join('/')
       .match(new RegExp(`^${data.currentPath.pattern}$`));
-
-  // if (data.currentPath) {
-  //   const targetString = pathes[data.currentPath?.slot].join('/');
-  //   console.log(targetString, data.currentPath?.pattern, data.name, isActive);
-  // }
 
   const isSlot = data.name.match('@');
   const slotName = (
@@ -199,14 +197,35 @@ const Item = ({
     );
   } else {
     return (
-      <li className="h-9 px-3 flex items-center">
+      <li className="h-9 px-3 flex gap-4 items-center">
         <span className="flex-1">{data.name}</span>
-        <span
-          className={classNames(
-            'w-2 h-2 rounded-full transition shadow-[0_0_10px_0]',
-            isActive ? colors.badge[slotName] : 'shadow-transparent'
-          )}
-        ></span>
+
+        {data.sourcePath && (
+          <Link
+            href={{
+              pathname,
+              query: { source: data.sourcePath },
+            }}
+          >
+            <CodeBracketIcon className="w-5 h-5 text-gray-600" />
+          </Link>
+        )}
+        {isActive && (
+          <span className="relative flex h-2.5 w-2.5">
+            <span
+              className={classNames(
+                'animate-ping absolute inline-flex h-full w-full rounded-full opacity-75',
+                colors.badge[slotName]
+              )}
+            ></span>
+            <span
+              className={classNames(
+                'relative inline-flex rounded-full h-2.5 w-2.5',
+                colors.badge[slotName]
+              )}
+            ></span>
+          </span>
+        )}
       </li>
     );
   }

@@ -1,3 +1,4 @@
+import Note from '@/app/_components/note';
 import Link from 'next/link';
 
 export default function Default() {
@@ -67,6 +68,11 @@ export default function Default() {
           </div>
         </fieldset>
       </div>
+
+      <Note
+        title="/@sidebar/monsters/page.tsx"
+        description="モンスター一覧画面（/monsters）で表示されるサイドバー"
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { BookOpenIcon, HomeIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Note from '../_components/note';
 
 const links = [
   {
@@ -49,6 +50,11 @@ export default function Sidebar() {
           </li>
         ))}
       </ul>
+
+      <Note
+        title="/@sidebar/page.tsx"
+        description="ルート画面（/）で表示されるサイドバー"
+      />
     </div>
   );
 }

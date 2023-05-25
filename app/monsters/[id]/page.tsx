@@ -1,3 +1,4 @@
+import Note from '@/app/_components/note';
 import { Monsters } from '@/app/_lib/monsters';
 import Link from 'next/link';
 import React from 'react';
@@ -20,7 +21,11 @@ export default function PhotoDetail({
       </div>
       <h1 className="mt-4 font-semibold mb-6 text-2xl">{item.title}</h1>
 
-      <p>直接アクセスしたらこの画面が表示されます。</p>
+      <p className="text-gray-400">
+        直接アクセスしたらこの画面が表示されます。
+      </p>
+
+      <Note title="/monsters/[id]/page.tsx" description="" />
     </div>
   );
 }
