@@ -13,8 +13,9 @@ export default function CoreLayout({
       <FileTree />
       <div className="flex-1">
         <Header />
-        <div className="flex gap-10 mt-10">{children}</div>
+        <div className="flex flex-col lg:flex-row gap-10 mt-10">{children}</div>
       </div>
+      {/* @ts-expect-error */}
       <CodePanel />
     </div>
   );
